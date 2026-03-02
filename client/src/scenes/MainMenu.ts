@@ -31,7 +31,7 @@ export class MainMenu extends Phaser.Scene {
     }).setOrigin(0.5).setInteractive();
 
     // Add pulsing animation to draw attention
-    this.tweens.add({
+    const pulseTween = this.tweens.add({
       targets: startButton,
       scaleX: 1.1,
       scaleY: 1.1,
@@ -42,14 +42,16 @@ export class MainMenu extends Phaser.Scene {
     });
 
     startButton.on('pointerover', () => {
-      startButton.setStyle({ backgroundColor: '#005500', color: '#ffffff' });
+      startButton.setStyle({ backgroundColor: '#005500' });
     });
 
     startButton.on('pointerout', () => {
-      startButton.setStyle({ backgroundColor: '#003300', color: '#00ff00' });
+      startButton.setStyle({ backgroundColor: '#003300' });
     });
 
     startButton.on('pointerdown', () => {
+      // Stop the pulsing animation before transitioning
+      pulseTween.stop();
       this.scene.start('GameScene');
     });
 
