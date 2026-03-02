@@ -26,12 +26,7 @@ app.get("/api/health", (req, res) => {
 
 // Get available rooms
 app.get("/api/rooms", async (req, res) => {
-  try {
-    const rooms = await gameServer.matchMaker.query({ name: "game" });
-    res.json({ success: true, rooms });
-  } catch (error: any) {
-    res.status(500).json({ success: false, error: error.message });
-  }
+  res.json({ success: true, message: "Use WebSocket to connect to game rooms at /game" });
 });
 
 // API documentation endpoint

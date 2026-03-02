@@ -46,7 +46,7 @@ export class GameScene extends Phaser.Scene {
 
   private async connectToServer() {
     try {
-      const serverUrl = import.meta.env.VITE_SERVER_URL || 'ws://localhost:2567';
+      const serverUrl = (import.meta as any).env?.VITE_SERVER_URL || 'ws://localhost:2567';
       this.client = new Client(serverUrl);
       
       this.updateStatus('Joining game room...');
@@ -74,7 +74,7 @@ export class GameScene extends Phaser.Scene {
         this.addPlayer(sessionId, player);
       });
 
-      this.room.state.players.onRemove((player: any, sessionId: string) => {
+      this.room.state.players.onRemove((_player: any, sessionId: string) => {
         this.removePlayer(sessionId);
       });
 
@@ -82,7 +82,7 @@ export class GameScene extends Phaser.Scene {
         this.addEnemy(enemyId, enemy);
       });
 
-      this.room.state.enemies.onRemove((enemy: any, enemyId: string) => {
+      this.room.state.enemies.onRemove((_enemy: any, enemyId: string) => {
         this.removeEnemy(enemyId);
       });
 
