@@ -19,12 +19,12 @@ const playerSockets = new Map();
 
 // Generate unique game ID
 function generateGameId() {
-  return 'game-' + Math.random().toString(36).substr(2, 9);
+  return 'game-' + Math.random().toString(36).substring(2, 11);
 }
 
 // Generate unique player ID
 function generatePlayerId() {
-  return 'player-' + Math.random().toString(36).substr(2, 9);
+  return 'player-' + Math.random().toString(36).substring(2, 11);
 }
 
 io.on('connection', (socket) => {
