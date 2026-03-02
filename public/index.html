@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArgenticWeb - Human vs AI Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎮 ArgenticWeb</h1>
+            <p class="subtitle">A Game of Human and Agentic Players</p>
+        </header>
+
+        <div id="menu" class="menu">
+            <div class="menu-content">
+                <h2>Welcome to ArgenticWeb!</h2>
+                <p>Compete against AI agents to collect resources first!</p>
+                
+                <div class="input-group">
+                    <input type="text" id="playerName" placeholder="Enter your name" value="Player 1">
+                </div>
+
+                <div class="button-group">
+                    <button id="createGameBtn" class="btn btn-primary">Create New Game</button>
+                </div>
+
+                <div class="divider">OR</div>
+
+                <div class="input-group">
+                    <input type="text" id="gameIdInput" placeholder="Enter Game ID">
+                </div>
+                <div class="button-group">
+                    <button id="joinGameBtn" class="btn btn-secondary">Join Game</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="lobby" class="lobby hidden">
+            <div class="lobby-content">
+                <h2>Game Lobby</h2>
+                <p>Game ID: <span id="lobbyGameId" class="game-id"></span></p>
+                
+                <div class="players-list">
+                    <h3>Players:</h3>
+                    <div id="playersList"></div>
+                </div>
+
+                <div class="button-group">
+                    <button id="addAIBtn" class="btn btn-secondary">Add AI Player</button>
+                    <button id="startGameBtn" class="btn btn-primary">Start Game</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="game" class="game hidden">
+            <div class="game-info">
+                <div class="info-panel">
+                    <h3>Current Turn</h3>
+                    <div id="currentTurn" class="current-turn"></div>
+                </div>
+                <div class="info-panel">
+                    <h3>Players</h3>
+                    <div id="playersInfo" class="players-info"></div>
+                </div>
+            </div>
+
+            <div class="game-board">
+                <canvas id="gameCanvas" width="500" height="500"></canvas>
+            </div>
+
+            <div class="controls">
+                <h3>Controls</h3>
+                <div class="control-buttons">
+                    <button class="control-btn" id="moveUp">↑</button>
+                </div>
+                <div class="control-buttons">
+                    <button class="control-btn" id="moveLeft">←</button>
+                    <button class="control-btn" id="moveDown">↓</button>
+                    <button class="control-btn" id="moveRight">→</button>
+                </div>
+                <p class="control-hint">Use arrow keys or buttons to move</p>
+            </div>
+
+            <div id="messages" class="messages"></div>
+        </div>
+
+        <div id="gameOver" class="game-over hidden">
+            <div class="game-over-content">
+                <h2>🏆 Game Over!</h2>
+                <p id="winnerText"></p>
+                <button id="newGameBtn" class="btn btn-primary">New Game</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
