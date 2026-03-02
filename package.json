@@ -1,0 +1,29 @@
+{
+  "name": "argentic-web",
+  "version": "1.0.0",
+  "description": "An online multiplayer game about AI and human players",
+  "private": true,
+  "workspaces": [
+    "client",
+    "server",
+    "shared"
+  ],
+  "scripts": {
+    "install:all": "npm install && npm install --workspace=client && npm install --workspace=server && npm install --workspace=shared",
+    "dev": "concurrently \"npm run dev --workspace=server\" \"npm run dev --workspace=client\"",
+    "build": "npm run build --workspace=shared && npm run build --workspace=server && npm run build --workspace=client",
+    "start:server": "npm run start --workspace=server",
+    "start:client": "npm run dev --workspace=client"
+  },
+  "keywords": [
+    "game",
+    "multiplayer",
+    "ai",
+    "colyseus"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
