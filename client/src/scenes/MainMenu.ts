@@ -22,20 +22,31 @@ export class MainMenu extends Phaser.Scene {
       color: '#aaaaaa'
     }).setOrigin(0.5);
 
-    // Start button
-    const startButton = this.add.text(centerX, centerY + 50, 'Start Game', {
-      fontSize: '32px',
+    // Start button with enhanced styling
+    const startButton = this.add.text(centerX, centerY + 50, '▶️ Start Game', {
+      fontSize: '36px',
       color: '#00ff00',
       backgroundColor: '#003300',
-      padding: { x: 20, y: 10 }
+      padding: { x: 30, y: 15 }
     }).setOrigin(0.5).setInteractive();
 
+    // Add pulsing animation to draw attention
+    this.tweens.add({
+      targets: startButton,
+      scaleX: 1.1,
+      scaleY: 1.1,
+      duration: 800,
+      yoyo: true,
+      repeat: -1,
+      ease: 'Sine.easeInOut'
+    });
+
     startButton.on('pointerover', () => {
-      startButton.setStyle({ backgroundColor: '#005500' });
+      startButton.setStyle({ backgroundColor: '#005500', color: '#ffffff' });
     });
 
     startButton.on('pointerout', () => {
-      startButton.setStyle({ backgroundColor: '#003300' });
+      startButton.setStyle({ backgroundColor: '#003300', color: '#00ff00' });
     });
 
     startButton.on('pointerdown', () => {
@@ -46,6 +57,13 @@ export class MainMenu extends Phaser.Scene {
     this.add.text(centerX, centerY + 150, 'Use Arrow Keys or WASD to move\nSpace to Attack\nL for Location Info', {
       fontSize: '16px',
       color: '#888888',
+      align: 'center'
+    }).setOrigin(0.5);
+    
+    // Click instruction
+    this.add.text(centerX, centerY + 220, '👆 Click the button above to start playing!', {
+      fontSize: '14px',
+      color: '#ffff00',
       align: 'center'
     }).setOrigin(0.5);
   }

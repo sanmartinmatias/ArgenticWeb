@@ -81,11 +81,14 @@ npm run start:client
 ### Human Players
 
 1. Open http://localhost:3000 in your browser
-2. Click "Start Game" to join
-3. Use controls to play:
+2. **Click the "Start Game" button** in the game canvas (the dark area in the center)
+3. Once connected, use these controls to play:
    - **Arrow Keys** or **WASD**: Move your character
    - **Space**: Attack nearby enemies
    - **L**: Get location description
+4. You can also use the control buttons on the right side of the screen
+
+**Note**: The game canvas (black area) is interactive - click the green "Start Game" button that appears in the center to begin!
 
 ### AI Agents
 

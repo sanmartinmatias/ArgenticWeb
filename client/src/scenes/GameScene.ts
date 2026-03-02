@@ -49,14 +49,14 @@ export class GameScene extends Phaser.Scene {
       const serverUrl = (import.meta as any).env?.VITE_SERVER_URL || 'ws://localhost:2567';
       this.client = new Client(serverUrl);
       
-      this.updateStatus('Joining game room...');
+      this.updateStatus('🔄 Joining game room...');
       
       this.room = await this.client.joinOrCreate('game', {
         name: `Player_${Math.random().toString(36).substring(7)}`
       });
 
       this.localPlayerId = this.room.sessionId;
-      this.updateStatus('Connected! You can play now.');
+      this.updateStatus('✅ Connected! Use arrow keys/WASD to move, Space to attack, L for location info');
 
       // Listen for welcome message
       this.room.onMessage('welcome', (message) => {
@@ -88,7 +88,7 @@ export class GameScene extends Phaser.Scene {
 
     } catch (error) {
       console.error('Connection error:', error);
-      this.updateStatus('Failed to connect to server. Is it running?');
+      this.updateStatus('❌ Failed to connect to server. Make sure server is running at localhost:2567');
     }
   }
 
